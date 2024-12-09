@@ -29,6 +29,9 @@ function getComputerChoice(int) {
 console.log(getComputerChoice(randomInt));
 
 // 1. Create a new function named getHumanChoice.
+
+// 2. Write the code so that getHumanChoice will return one of the valid choices depending on what the user inputs.
+// Hint: Use the prompt method to get the user’s input.
 function getHumanChoice() {
   const int = parseInt(
     prompt(`1 -> "rock"\n2 -> "paper"\n3 -> "scissors"\nEnter a number: `)
@@ -43,9 +46,8 @@ function getHumanChoice() {
     return "Wrong input";
   }
 }
-// 2. Write the code so that getHumanChoice will return one of the valid choices depending on what the user inputs.
 
-// Hint: Use the prompt method to get the user’s input.
-// Test what your function returns by using console.log.
-
-console.log(getHumanChoice());
+// Create two new variables named humanScore and computerScore in the global scope.
+// Initialize those variables with the value of 0.
+const humanScore = 0;
+const computerScore = 0;
