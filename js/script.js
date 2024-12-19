@@ -3,44 +3,47 @@ let humanScore = 0;
 let computerScore = 0;
 const displayPlayer = document.getElementById("player-choice");
 const displayComputer = document.getElementById("computer-choice");
-const displayRoundResult = document.getElementById("round-result");
+const displayRoundResult = document.getElementById("choices-display");
+const scores = document.getElementById("scores");
+const para = document.createElement("p");
 
 function getComputerChoice() {
   const int = Math.floor(Math.random() * 3);
   if (int === 0) {
-    return "rock";
+    return "🪨";
   } else if (int === 1) {
-    return "paper";
+    return "🧻";
   } else if (int === 2) {
-    return "scissors";
+    return "✂️";
   }
 }
 
 const btnRock = document
   .getElementById("rock")
   .addEventListener("click", () => {
-    playRound("rock");
+    playRound("🪨");
   });
 const btnPaper = document
   .getElementById("paper")
   .addEventListener("click", () => {
-    playRound("paper");
+    playRound("🧻");
   });
 const btnScissors = document
   .getElementById("scissors")
   .addEventListener("click", () => {
-    playRound("scissors");
+    playRound("✂️");
   });
 
 function playRound(choice) {
   counter++;
   let humanChoice = choice;
   let computerChoice = getComputerChoice();
+  scores.appendChild(para);
+
   displayPlayer.textContent = `Player: ${humanScore}`;
   displayComputer.textContent = `Computer: ${computerScore}`;
-  displayRoundResult.textContent = `Round no. ${counter}`;
 
-  if ((humanScore || computerScore) === 5) {
+  if (humanScore === 5 || computerScore === 5) {
     if (humanScore > computerScore) {
       setTimeout(renewGame, 100, "You win!");
     } else if (humanScore < computerScore) {
@@ -50,28 +53,38 @@ function playRound(choice) {
     }
   } else {
     if (humanChoice === computerChoice) {
+      para.textContent = `Round no. ${counter}: It's a tie.`;
+      displayRoundResult.textContent = `🫂`;
     } else if (
-      (humanChoice === "rock" && computerChoice === "scissors") ||
-      (humanChoice === "paper" && computerChoice === "rock") ||
-      (humanChoice === "scissors" && computerChoice === "paper")
+      (humanChoice === "🪨" && computerChoice === "✂️") ||
+      (humanChoice === "🧻" && computerChoice === "🪨") ||
+      (humanChoice === "✂️" && computerChoice === "🧻")
     ) {
       humanScore++;
+      para.textContent = `Round no. ${counter}: You win!`;
+      displayRoundResult.textContent = `${humanChoice} vs ${computerChoice}`;
     } else if (
-      (humanChoice === "rock" && computerChoice === "paper") ||
-      (humanChoice === "paper" && computerChoice === "scissors") ||
-      (humanChoice === "scissors" && computerChoice === "rock")
+      (humanChoice === "🪨" && computerChoice === "🧻") ||
+      (humanChoice === "🧻" && computerChoice === "✂️") ||
+      (humanChoice === "✂️" && computerChoice === "🪨")
     ) {
       computerScore++;
+      para.textContent = `Round no. ${counter}: You lose...`;
+      displayRoundResult.textContent = `${humanChoice} vs ${computerChoice}`;
     }
   }
 }
 
 function renewGame(str) {
-  alert(str);
-  counter = 0;
-  humanScore = 0;
-  computerScore = 0;
-  displayRoundResult.textContent = `Round no. `;
-  displayPlayer.textContent = `Player: 0`;
-  displayComputer.textContent = `Computer: 0`;
+  const finalDisplay = document.createElement("h1");
+  const resetBtn = document.createElement("button");
+  finalDisplay.textContent = str;
+  finalDisplay.style.margin = "10rem 0 5rem";
+  resetBtn.textContent = "Play again?";
+  resetBtn.style.cssText = `border-radius: 35px; color: hsl(20, 70%, 90%); font-family: "CaskaydiaCove Nerd Font", monospace; font-size: 1.5rem`;
+  document.body.replaceChildren(finalDisplay);
+  document.body.appendChild(resetBtn);
+  resetBtn.addEventListener("click", () => {
+    location.reload();
+  });
 }

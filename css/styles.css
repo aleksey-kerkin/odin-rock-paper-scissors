@@ -13,7 +13,7 @@ body {
 button {
   font-size: 3rem;
   text-align: center;
-  margin: 2rem 1rem;
+  margin: 2rem 0.5rem;
   padding: 20px;
   border-radius: 50%;
   transition: 500ms ease;
@@ -26,6 +26,24 @@ button:hover {
   cursor: pointer;
 }
 
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+p {
+  font-size: 1.25rem;
+}
+
 #scores {
   text-align: center;
+}
+
+#choices-display {
+  font-size: 3rem;
+  text-align: center;
+  margin: 2rem 1rem;
 }
