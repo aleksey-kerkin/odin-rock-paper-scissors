@@ -10,28 +10,28 @@ const para = document.createElement("p");
 function getComputerChoice() {
   const int = Math.floor(Math.random() * 3);
   if (int === 0) {
-    return "🪨";
+    return "✊🏻";
   } else if (int === 1) {
-    return "🧻";
+    return "✋🏻";
   } else if (int === 2) {
-    return "✂️";
+    return "✌🏻";
   }
 }
 
 const btnRock = document
   .getElementById("rock")
   .addEventListener("click", () => {
-    playRound("🪨");
+    playRound("✊🏻");
   });
 const btnPaper = document
   .getElementById("paper")
   .addEventListener("click", () => {
-    playRound("🧻");
+    playRound("✋🏻");
   });
 const btnScissors = document
   .getElementById("scissors")
   .addEventListener("click", () => {
-    playRound("✂️");
+    playRound("✌🏻");
   });
 
 function playRound(choice) {
@@ -42,19 +42,19 @@ function playRound(choice) {
 
   if (humanChoice === computerChoice) {
     para.textContent = `Round no. ${counter}: It's a tie.`;
-    displayRoundResult.textContent = `🫂`;
+    displayRoundResult.textContent = `🤝🏻`;
   } else if (
-    (humanChoice === "🪨" && computerChoice === "✂️") ||
-    (humanChoice === "🧻" && computerChoice === "🪨") ||
-    (humanChoice === "✂️" && computerChoice === "🧻")
+    (humanChoice === "✊🏻" && computerChoice === "✌🏻") ||
+    (humanChoice === "✋🏻" && computerChoice === "✊🏻") ||
+    (humanChoice === "✌🏻" && computerChoice === "✋🏻")
   ) {
     humanScore++;
     para.textContent = `Round no. ${counter}: You win!`;
     displayRoundResult.textContent = `${humanChoice} vs ${computerChoice}`;
   } else if (
-    (humanChoice === "🪨" && computerChoice === "🧻") ||
-    (humanChoice === "🧻" && computerChoice === "✂️") ||
-    (humanChoice === "✂️" && computerChoice === "🪨")
+    (humanChoice === "✊🏻" && computerChoice === "✋🏻") ||
+    (humanChoice === "✋🏻" && computerChoice === "✌🏻") ||
+    (humanChoice === "✌🏻" && computerChoice === "✊🏻")
   ) {
     computerScore++;
     para.textContent = `Round no. ${counter}: You lose...`;
