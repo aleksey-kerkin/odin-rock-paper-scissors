@@ -64,11 +64,23 @@ function playRound(choice) {
   displayComputer.textContent = `Computer: ${computerScore}`;
   if (humanScore === 5 || computerScore === 5) {
     if (humanScore > computerScore) {
-      setTimeout(renewGame, 750, "You win!");
+      setTimeout(
+        renewGame,
+        500,
+        `You win!<br><br>🧠:${humanScore} vs ⚙️:${computerScore}`
+      );
     } else if (humanScore < computerScore) {
-      setTimeout(renewGame, 750, "You lose...");
+      setTimeout(
+        renewGame,
+        500,
+        `You lose...<br><br>🧠:${humanScore} vs ⚙️:${computerScore}`
+      );
     } else if (humanScore === computerScore) {
-      setTimeout(renewGame, 750, "It's a tie.");
+      setTimeout(
+        renewGame,
+        500,
+        `It's a tie.<br><br>🧠:${humanScore} vs ⚙️:${computerScore}`
+      );
     }
   }
 }
@@ -76,8 +88,8 @@ function playRound(choice) {
 function renewGame(str) {
   const finalDisplay = document.createElement("h1");
   const resetBtn = document.createElement("button");
-  finalDisplay.textContent = str;
-  finalDisplay.style.margin = "10rem 0 5rem";
+  finalDisplay.innerHTML = str;
+  finalDisplay.style.cssText = `margin: 10rem 0 1.25rem; text-align: center;`;
   resetBtn.textContent = "Play again?";
   resetBtn.style.cssText = `border-radius: 35px; color: hsl(20, 70%, 90%); font-family: "CaskaydiaCove Nerd Font", monospace; font-size: 1.5rem`;
   document.body.replaceChildren(finalDisplay);
