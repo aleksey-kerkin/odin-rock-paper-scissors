@@ -40,37 +40,35 @@ function playRound(choice) {
   let computerChoice = getComputerChoice();
   scores.appendChild(para);
 
+  if (humanChoice === computerChoice) {
+    para.textContent = `Round no. ${counter}: It's a tie.`;
+    displayRoundResult.textContent = `🫂`;
+  } else if (
+    (humanChoice === "🪨" && computerChoice === "✂️") ||
+    (humanChoice === "🧻" && computerChoice === "🪨") ||
+    (humanChoice === "✂️" && computerChoice === "🧻")
+  ) {
+    humanScore++;
+    para.textContent = `Round no. ${counter}: You win!`;
+    displayRoundResult.textContent = `${humanChoice} vs ${computerChoice}`;
+  } else if (
+    (humanChoice === "🪨" && computerChoice === "🧻") ||
+    (humanChoice === "🧻" && computerChoice === "✂️") ||
+    (humanChoice === "✂️" && computerChoice === "🪨")
+  ) {
+    computerScore++;
+    para.textContent = `Round no. ${counter}: You lose...`;
+    displayRoundResult.textContent = `${humanChoice} vs ${computerChoice}`;
+  }
   displayPlayer.textContent = `Player: ${humanScore}`;
   displayComputer.textContent = `Computer: ${computerScore}`;
-
   if (humanScore === 5 || computerScore === 5) {
     if (humanScore > computerScore) {
-      setTimeout(renewGame, 100, "You win!");
+      setTimeout(renewGame, 750, "You win!");
     } else if (humanScore < computerScore) {
-      setTimeout(renewGame, 100, "You lose...");
+      setTimeout(renewGame, 750, "You lose...");
     } else if (humanScore === computerScore) {
-      setTimeout(renewGame, 100, "It's a tie.");
-    }
-  } else {
-    if (humanChoice === computerChoice) {
-      para.textContent = `Round no. ${counter}: It's a tie.`;
-      displayRoundResult.textContent = `🫂`;
-    } else if (
-      (humanChoice === "🪨" && computerChoice === "✂️") ||
-      (humanChoice === "🧻" && computerChoice === "🪨") ||
-      (humanChoice === "✂️" && computerChoice === "🧻")
-    ) {
-      humanScore++;
-      para.textContent = `Round no. ${counter}: You win!`;
-      displayRoundResult.textContent = `${humanChoice} vs ${computerChoice}`;
-    } else if (
-      (humanChoice === "🪨" && computerChoice === "🧻") ||
-      (humanChoice === "🧻" && computerChoice === "✂️") ||
-      (humanChoice === "✂️" && computerChoice === "🪨")
-    ) {
-      computerScore++;
-      para.textContent = `Round no. ${counter}: You lose...`;
-      displayRoundResult.textContent = `${humanChoice} vs ${computerChoice}`;
+      setTimeout(renewGame, 750, "It's a tie.");
     }
   }
 }
