@@ -10,7 +10,15 @@ body {
   background-color: hsl(200, 30%, 10%);
 }
 
+#buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 button {
+  max-width: 100px;
+  max-height: 100px;
   font-size: 3rem;
   text-align: center;
   margin: 2rem 0.5rem;
@@ -19,6 +27,7 @@ button {
   transition: 500ms ease;
   background: hsl(20, 30%, 40%);
   border: hsl(20, 70%, 90%) solid 2px;
+  flex: 1 0 100%;
 }
 
 button:hover {
