@@ -91,7 +91,7 @@ function renewGame(str) {
   finalDisplay.innerHTML = str;
   finalDisplay.style.cssText = `margin: 10rem 0 1.25rem; text-align: center;`;
   resetBtn.textContent = "Play again?";
-  resetBtn.style.cssText = `border-radius: 35px; color: hsl(20, 70%, 90%); font-family: "CaskaydiaCove Nerd Font", monospace; font-size: 1.5rem`;
+  resetBtn.style.cssText = `border-radius: 35px; color: hsl(20, 70%, 90%); font-family: "CaskaydiaCove Nerd Font", monospace; font-size: 1.5rem; max-width: 200px`;
   document.body.replaceChildren(finalDisplay);
   document.body.appendChild(resetBtn);
   resetBtn.addEventListener("click", () => {
